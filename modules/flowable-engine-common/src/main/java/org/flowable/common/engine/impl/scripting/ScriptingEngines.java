@@ -51,6 +51,7 @@ public class ScriptingEngines {
 
     public static final String DEFAULT_SCRIPTING_LANGUAGE = "juel";
     public static final String GROOVY_SCRIPTING_LANGUAGE = "groovy";
+    public static final String KOTLIN_SCRIPTING_LANGUAGE = "kotlin";
 
     private final ScriptEngineManager scriptEngineManager;
     protected ScriptBindingsFactory scriptBindingsFactory;
@@ -71,6 +72,13 @@ public class ScriptingEngines {
     public ScriptingEngines(ScriptEngineManager scriptEngineManager) {
         this.scriptEngineManager = scriptEngineManager;
         cachedEngines = new HashMap<>();
+
+//        scriptEngineManager.getEngineFactories().forEach((ef) -> {
+//            LOGGER.info("Found scripting engine: {}", ef.getEngineName());
+//        });
+
+//        LOGGER.info("Kotlin (kts) status: {}", scriptEngineManager.getEngineByExtension("kts"));
+//        LOGGER.info("Kotlin status: {}", scriptEngineManager.getEngineByName("kotlin"));
     }
 
     public ScriptEvaluation evaluate(ScriptEngineRequest request) {
@@ -164,7 +172,7 @@ public class ScriptingEngines {
                         return scriptEngine;
                     }
 
-                    scriptEngine = scriptEngineManager.getEngineByName(language);
+                    scriptEngine = lookupScriptEngine(language);
 
                     if (scriptEngine != null) {
                         // ACT-1858: Special handling for groovy engine regarding GC
@@ -189,13 +197,22 @@ public class ScriptingEngines {
                 }
             }
         } else {
-            scriptEngine = scriptEngineManager.getEngineByName(language);
+            scriptEngine = lookupScriptEngine(language);
         }
 
         if (scriptEngine == null) {
             throw new FlowableException("Can't find scripting engine for '" + language + "'");
         }
         return scriptEngine;
+    }
+
+    private ScriptEngine lookupScriptEngine(String engine) {
+        // For some reason kotlin needs the extension
+        if (KOTLIN_SCRIPTING_LANGUAGE.equalsIgnoreCase(engine)) {
+            return scriptEngineManager.getEngineByExtension("kts");
+        }
+
+        return scriptEngineManager.getEngineByName(engine);
     }
 
     /**

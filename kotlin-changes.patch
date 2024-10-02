@@ -1,0 +1,230 @@
+diff --git a/docs/public-api/tools/flowable-oas-generator/pom.xml b/docs/public-api/tools/flowable-oas-generator/pom.xml
+index 7628625091..74efc4a30c 100644
+--- a/docs/public-api/tools/flowable-oas-generator/pom.xml
++++ b/docs/public-api/tools/flowable-oas-generator/pom.xml
+@@ -308,6 +308,10 @@
+             <groupId>org.apache.groovy</groupId>
+             <artifactId>groovy-jsr223</artifactId>
+         </dependency>
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++        </dependency>
+         <dependency>
+             <groupId>javax.servlet</groupId>
+             <artifactId>javax.servlet-api</artifactId>
+diff --git a/modules/flowable-app-engine/pom.xml b/modules/flowable-app-engine/pom.xml
+index 74e0801e52..be6c5ffbfe 100644
+--- a/modules/flowable-app-engine/pom.xml
++++ b/modules/flowable-app-engine/pom.xml
+@@ -132,6 +132,11 @@
+             <artifactId>groovy-jsr223</artifactId>
+             <scope>test</scope>
+         </dependency>
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++            <scope>test</scope>
++        </dependency>
+         <dependency>
+             <groupId>org.flowable</groupId>
+             <artifactId>flowable-dmn-api</artifactId>
+diff --git a/modules/flowable-app-rest/pom.xml b/modules/flowable-app-rest/pom.xml
+index 4329b8d609..bf9f78cfe4 100644
+--- a/modules/flowable-app-rest/pom.xml
++++ b/modules/flowable-app-rest/pom.xml
+@@ -809,6 +809,10 @@
+             <groupId>org.apache.groovy</groupId>
+             <artifactId>groovy-jsr223</artifactId>
+         </dependency>
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++        </dependency>
+         <dependency>
+             <groupId>javax.xml.bind</groupId> <!-- Needed for swagger doc generation -->
+             <artifactId>jaxb-api</artifactId>
+diff --git a/modules/flowable-cmmn-engine/pom.xml b/modules/flowable-cmmn-engine/pom.xml
+index f58675fb07..71817df324 100644
+--- a/modules/flowable-cmmn-engine/pom.xml
++++ b/modules/flowable-cmmn-engine/pom.xml
+@@ -184,6 +184,11 @@
+             <artifactId>groovy-jsr223</artifactId>
+             <scope>test</scope>
+         </dependency>
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++            <scope>test</scope>
++        </dependency>
+         <dependency>
+             <groupId>org.mockito</groupId>
+             <artifactId>mockito-junit-jupiter</artifactId>
+diff --git a/modules/flowable-engine/pom.xml b/modules/flowable-engine/pom.xml
+index d0a494f724..a289b19d0d 100755
+--- a/modules/flowable-engine/pom.xml
++++ b/modules/flowable-engine/pom.xml
+@@ -147,6 +147,11 @@
+             <artifactId>groovy-jsr223</artifactId>
+             <scope>provided</scope>
+         </dependency>
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++            <scope>provided</scope>
++        </dependency>
+         <dependency>
+             <groupId>org.drools</groupId>
+             <artifactId>drools-core</artifactId>
+diff --git a/modules/flowable-http/pom.xml b/modules/flowable-http/pom.xml
+index b54698affa..e0af76bc3f 100644
+--- a/modules/flowable-http/pom.xml
++++ b/modules/flowable-http/pom.xml
+@@ -234,6 +234,11 @@
+             <artifactId>groovy-jsr223</artifactId>
+             <scope>test</scope>
+         </dependency>
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++            <scope>test</scope>
++        </dependency>
+     </dependencies>
+     <profiles>
+         <profile>
+diff --git a/modules/flowable-spring-boot/flowable-spring-boot-samples/pom.xml b/modules/flowable-spring-boot/flowable-spring-boot-samples/pom.xml
+index 29f7708490..c2ce02788a 100644
+--- a/modules/flowable-spring-boot/flowable-spring-boot-samples/pom.xml
++++ b/modules/flowable-spring-boot/flowable-spring-boot-samples/pom.xml
+@@ -38,6 +38,10 @@
+             <groupId>org.apache.groovy</groupId>
+             <artifactId>groovy-jsr223</artifactId>
+         </dependency>
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++        </dependency>
+         <dependency>
+             <groupId>com.h2database</groupId>
+             <artifactId>h2</artifactId>
+diff --git a/modules/flowable-spring-boot/flowable-spring-boot-starters/flowable-spring-boot-autoconfigure/pom.xml b/modules/flowable-spring-boot/flowable-spring-boot-starters/flowable-spring-boot-autoconfigure/pom.xml
+index 18bae70620..0210dce2e9 100644
+--- a/modules/flowable-spring-boot/flowable-spring-boot-starters/flowable-spring-boot-autoconfigure/pom.xml
++++ b/modules/flowable-spring-boot/flowable-spring-boot-starters/flowable-spring-boot-autoconfigure/pom.xml
+@@ -194,6 +194,11 @@
+             <artifactId>groovy-jsr223</artifactId>
+             <scope>test</scope>
+         </dependency>
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++            <scope>test</scope>
++        </dependency>
+ 
+         <dependency>
+             <groupId>org.springframework</groupId>
+diff --git a/modules/flowable-spring-boot/flowable-spring-boot-starters/flowable-spring-boot-starter-integration/pom.xml b/modules/flowable-spring-boot/flowable-spring-boot-starters/flowable-spring-boot-starter-integration/pom.xml
+index b111bf93e9..11c2746b5e 100644
+--- a/modules/flowable-spring-boot/flowable-spring-boot-starters/flowable-spring-boot-starter-integration/pom.xml
++++ b/modules/flowable-spring-boot/flowable-spring-boot-starters/flowable-spring-boot-starter-integration/pom.xml
+@@ -36,6 +36,12 @@
+             <scope>test</scope>
+         </dependency>
+ 
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++            <scope>test</scope>
++        </dependency>
++
+         <dependency>
+             <groupId>com.h2database</groupId>
+             <artifactId>h2</artifactId>
+diff --git a/modules/flowable5-engine/pom.xml b/modules/flowable5-engine/pom.xml
+index 844794a805..a8f0d0ac6d 100644
+--- a/modules/flowable5-engine/pom.xml
++++ b/modules/flowable5-engine/pom.xml
+@@ -57,6 +57,11 @@
+ 			<artifactId>groovy-jsr223</artifactId>
+ 			<scope>provided</scope>
+ 		</dependency>
++		<dependency>
++			<groupId>org.jetbrains.kotlin</groupId>
++			<artifactId>kotlin-scripting-jsr223</artifactId>
++			<scope>provided</scope>
++		</dependency>
+ 		<dependency>
+ 			<groupId>org.drools</groupId>
+ 			<artifactId>drools-core</artifactId>
+diff --git a/modules/flowable5-spring-test/pom.xml b/modules/flowable5-spring-test/pom.xml
+index 34e1e155af..d6ab1e09ae 100644
+--- a/modules/flowable5-spring-test/pom.xml
++++ b/modules/flowable5-spring-test/pom.xml
+@@ -128,6 +128,11 @@
+             <artifactId>groovy-jsr223</artifactId>
+             <scope>provided</scope>
+         </dependency>
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++            <scope>provided</scope>
++        </dependency>
+         <dependency>
+             <groupId>org.springframework</groupId>
+             <artifactId>spring-orm</artifactId>
+diff --git a/modules/flowable5-spring/pom.xml b/modules/flowable5-spring/pom.xml
+index ce2823f4bd..49081eb12c 100644
+--- a/modules/flowable5-spring/pom.xml
++++ b/modules/flowable5-spring/pom.xml
+@@ -130,6 +130,11 @@
+             <artifactId>groovy-jsr223</artifactId>
+             <scope>provided</scope>
+         </dependency>
++        <dependency>
++            <groupId>org.jetbrains.kotlin</groupId>
++            <artifactId>kotlin-scripting-jsr223</artifactId>
++            <scope>provided</scope>
++        </dependency>
+         <dependency>
+             <groupId>org.springframework</groupId>
+             <artifactId>spring-orm</artifactId>
+diff --git a/modules/flowable5-test/pom.xml b/modules/flowable5-test/pom.xml
+index ec7b3a14e4..bc8d7cdda1 100755
+--- a/modules/flowable5-test/pom.xml
++++ b/modules/flowable5-test/pom.xml
+@@ -50,6 +50,11 @@
+ 			<artifactId>groovy-jsr223</artifactId>
+ 			<scope>provided</scope>
+ 		</dependency>
++		<dependency>
++			<groupId>org.jetbrains.kotlin</groupId>
++			<artifactId>kotlin-scripting-jsr223</artifactId>
++			<scope>provided</scope>
++		</dependency>
+ 		<dependency>
+ 			<groupId>org.drools</groupId>
+ 			<artifactId>drools-core</artifactId>
+diff --git a/pom.xml b/pom.xml
+index d1760db94d..1a0fc84d1d 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -27,6 +27,7 @@
+ 		<cxf.version>3.4.2</cxf.version>
+ 		<slf4j.version>1.7.36</slf4j.version>
+ 		<groovy.version>4.0.3</groovy.version>
++		<kotlin.version>2.0.20</kotlin.version>
+ 		<jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
+ 
+ 		<junit.version>4.13.2</junit.version>
+@@ -807,6 +808,11 @@
+ 				<artifactId>groovy-jsr223</artifactId>
+ 				<version>${groovy.version}</version>
+ 			</dependency>
++			<dependency>
++				<groupId>org.jetbrains.kotlin</groupId>
++				<artifactId>kotlin-scripting-jsr223</artifactId>
++				<version>${kotlin.version}</version>
++			</dependency>
+ 			<dependency>
+ 				<groupId>org.apache.groovy</groupId>
+ 				<artifactId>groovy</artifactId>

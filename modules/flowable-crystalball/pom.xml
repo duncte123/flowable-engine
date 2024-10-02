@@ -141,6 +141,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-scripting-jsr223</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.zaxxer</groupId>
       <artifactId>HikariCP</artifactId>
       <scope>test</scope>

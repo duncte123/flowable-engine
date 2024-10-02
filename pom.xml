@@ -27,6 +27,7 @@
 		<cxf.version>3.4.2</cxf.version>
 		<slf4j.version>1.7.36</slf4j.version>
 		<groovy.version>4.0.3</groovy.version>
+		<kotlin.version>1.9.25</kotlin.version>
 		<jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
 
 		<junit.version>4.13.2</junit.version>
@@ -806,6 +807,12 @@
 				<groupId>org.apache.groovy</groupId>
 				<artifactId>groovy-jsr223</artifactId>
 				<version>${groovy.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jetbrains.kotlin</groupId>
+				<artifactId>kotlin-scripting-jsr223</artifactId>
+				<version>${kotlin.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.groovy</groupId>

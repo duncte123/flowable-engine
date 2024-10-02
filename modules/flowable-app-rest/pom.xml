@@ -810,6 +810,10 @@
             <artifactId>groovy-jsr223</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-scripting-jsr223</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.xml.bind</groupId> <!-- Needed for swagger doc generation -->
             <artifactId>jaxb-api</artifactId>
         </dependency>
