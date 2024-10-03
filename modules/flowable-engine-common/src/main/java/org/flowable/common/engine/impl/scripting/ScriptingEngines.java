@@ -70,6 +70,11 @@ public class ScriptingEngines {
     public ScriptingEngines(ScriptEngineManager scriptEngineManager) {
         this.scriptEngineManager = scriptEngineManager;
         cachedEngines = new HashMap<>();
+
+        // pre-cache kotlin engine, speeds up demos
+        if (cacheScriptingEngines) {
+            getEngineByName("kotlin");
+        }
     }
 
     public ScriptEvaluation evaluate(ScriptEngineRequest request) {
