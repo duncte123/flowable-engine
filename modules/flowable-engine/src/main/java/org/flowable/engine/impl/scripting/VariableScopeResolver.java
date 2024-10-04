@@ -14,6 +14,7 @@ package org.flowable.engine.impl.scripting;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.flowable.common.engine.api.FlowableException;
@@ -93,5 +94,14 @@ public class VariableScopeResolver implements Resolver {
         }
 
         return variableScope.getVariable((String) key);
+    }
+
+    // TODO: optimize, possibly fake the instances to make kotlin happy
+    @Override
+    public Set<Map.Entry<String, Object>> entrySet() {
+        return Set.of(
+            Map.entry(variableScopeKey, variableScope), // "execution"
+            Map.entry(runtimeServiceKey, processEngineConfiguration.getRuntimeService()) // "runtimeService"
+        );
     }
 }

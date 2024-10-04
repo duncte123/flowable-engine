@@ -6,7 +6,7 @@ STATUS=$?
 if [ $STATUS -eq 0 ]
 then
     cd modules/flowable-app-rest
-    mvn clean install -Pswagger,mysql spring-boot:run
+    mvn clean install -DskipTests -Pswagger,mysql spring-boot:run
 else
     echo "Build failure in dependent project. Cannot boot Flowable Rest."
 fi

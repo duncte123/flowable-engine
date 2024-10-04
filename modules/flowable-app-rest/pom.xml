@@ -769,6 +769,10 @@
             <artifactId>groovy-jsr223</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-scripting-jsr223</artifactId>
+        </dependency>
+        <dependency>
             <groupId>jakarta.xml.bind</groupId> <!-- Needed for swagger doc generation -->
             <artifactId>jakarta.xml.bind-api</artifactId>
         </dependency>

@@ -148,6 +148,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-scripting-jsr223</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-core</artifactId>
             <scope>provided</scope>
