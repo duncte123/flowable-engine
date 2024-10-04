@@ -13,6 +13,10 @@
 
 package org.flowable.common.engine.impl.scripting;
 
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @author Tom Baeyens
  */
@@ -21,4 +25,8 @@ public interface Resolver {
     boolean containsKey(Object key);
 
     Object get(Object key);
+
+    default Set<Map.Entry<String, Object>> entrySet() {
+        return Collections.emptySet();
+    }
 }

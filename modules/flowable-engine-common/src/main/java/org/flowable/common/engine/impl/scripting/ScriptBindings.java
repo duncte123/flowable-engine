@@ -13,26 +13,18 @@
 
 package org.flowable.common.engine.impl.scripting;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import org.flowable.common.engine.api.variable.VariableContainer;
+import org.flowable.variable.api.delegate.VariableScope;
 
 import javax.script.Bindings;
 import javax.script.SimpleScriptContext;
-
-import org.flowable.common.engine.api.variable.VariableContainer;
-import org.flowable.variable.api.delegate.VariableScope;
+import java.util.*;
 
 /**
  * @author Tom Baeyens
  * @author Joram Barrez
  */
 public class ScriptBindings implements Bindings {
-
     /**
      * The script engine implementations put some key/value pairs into the binding. This list contains those keys, such that they wouldn't be stored as process variable.
      * 
@@ -89,9 +81,24 @@ public class ScriptBindings implements Bindings {
         return defaultBindings.put(name, value);
     }
 
+    // TODO: Either deal with calling "bindings.get" in kotlin or fix what flowable does
+    //  Probably the first one tbh
     @Override
     public Set<Map.Entry<String, Object>> entrySet() {
-        return getVariables().entrySet();
+        // Kotlin looks at the entries while compiling the script
+        // Groovy takes the "I trust you bro" approach and assumes you are correct and the variable exists during runtime
+        final var entrySets = new HashSet<Map.Entry<String, Object>>();
+
+        for (Resolver scriptResolver : scriptResolvers) {
+            final var resolverEntries = scriptResolver.entrySet();
+
+            if (!resolverEntries.isEmpty()) {
+                entrySets.addAll(scriptResolver.entrySet());
+            }
+        }
+
+        entrySets.addAll(getVariables().entrySet());
+        return entrySets;
     }
 
     @Override
