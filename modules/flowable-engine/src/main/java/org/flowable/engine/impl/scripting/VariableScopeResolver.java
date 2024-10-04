@@ -96,18 +96,12 @@ public class VariableScopeResolver implements Resolver {
         return variableScope.getVariable((String) key);
     }
 
-    // TODO: optimize
+    // TODO: optimize, possibly fake the instances to make kotlin happy
     @Override
     public Set<Map.Entry<String, Object>> entrySet() {
         return Set.of(
-                Map.entry(variableScopeKey, variableScope),
-                Map.entry(processEngineConfigurationKey, processEngineConfiguration),
-                Map.entry(runtimeServiceKey, processEngineConfiguration.getRuntimeService()),
-                Map.entry(taskServiceKey, processEngineConfiguration.getTaskService()),
-                Map.entry(managementServiceKey, processEngineConfiguration.getManagementService()),
-                Map.entry(formServiceKey, processEngineConfiguration.getFormService()),
-                Map.entry(identityServiceKey, processEngineConfiguration.getIdentityService()),
-                Map.entry(historyServiceKey, processEngineConfiguration.getHistoryService())
+            Map.entry(variableScopeKey, variableScope), // "execution"
+            Map.entry(runtimeServiceKey, processEngineConfiguration.getRuntimeService()) // "runtimeService"
         );
     }
 }

@@ -90,11 +90,7 @@ public class ScriptBindings implements Bindings {
         final var entrySets = new HashSet<Map.Entry<String, Object>>();
 
         for (Resolver scriptResolver : scriptResolvers) {
-            final var resolverEntries = scriptResolver.entrySet();
-
-            if (!resolverEntries.isEmpty()) {
-                entrySets.addAll(scriptResolver.entrySet());
-            }
+            entrySets.addAll(scriptResolver.entrySet());
         }
 
         entrySets.addAll(getVariables().entrySet());
